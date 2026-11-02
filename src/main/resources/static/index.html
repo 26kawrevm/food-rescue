@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#123d2b">
+  <title>FoodRescue | Smart Food Sharing</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="#"><span class="brand-icon">✳</span><span>Food<span class="brand-light">Rescue</span><small>SMART FOOD SHARING</small></span></a>
+  <nav><a href="#dashboard">Dashboard</a><a href="#listings">Food listings</a><a href="#requests">Requests</a></nav>
+  <a class="nav-cta" href="#add-food">＋ Add surplus</a>
+</header>
+<main>
+  <section class="hero">
+    <div class="hero-copy">
+      <div class="eyebrow"><span></span> LESS WASTE. MORE GOOD.</div>
+      <h1>Good food deserves<br><em>another table.</em></h1>
+      <p>A simple way for food providers to share safe surplus with nearby people and community organisations.</p>
+      <div class="hero-actions"><a class="btn btn-primary" href="#listings">Explore available food <b>→</b></a><a class="text-link" href="#how-it-works">How it works</a></div>
+      <div class="hero-note">✦ &nbsp;List it · Match it · Collect it</div>
+    </div>
+    <div class="hero-art" aria-label="Food sharing illustration">
+      <div class="art-orbit orbit-one"></div><div class="art-orbit orbit-two"></div>
+      <div class="food-emoji">🥗</div><div class="art-tag tag-top">↗ &nbsp;Share surplus</div><div class="art-tag tag-bottom">♥ &nbsp;Make an impact</div>
+      <div class="leaf leaf-one">✦</div><div class="leaf leaf-two">✳</div>
+    </div>
+  </section>
+
+  <section id="dashboard" class="stats-section">
+    <div class="section-kicker">OUR COMMUNITY IMPACT</div>
+    <div class="stats-grid">
+      <article class="stat"><span class="stat-icon">▤</span><div><strong id="totalListings">0</strong><small>Total listings</small></div></article>
+      <article class="stat"><span class="stat-icon">◉</span><div><strong id="availableListings">0</strong><small>Available now</small></div></article>
+      <article class="stat"><span class="stat-icon">↗</span><div><strong id="totalRequests">0</strong><small>Pickup requests</small></div></article>
+      <article class="stat"><span class="stat-icon">♥</span><div><strong id="quantityRescued">0</strong><small>Quantity rescued</small></div></article>
+    </div>
+  </section>
+
+  <section id="how-it-works" class="how-section">
+    <div class="section-heading"><div><div class="section-kicker">A BETTER WAY TO SHARE</div><h2>From surplus to <em>shared.</em></h2></div><p>Every step is visible, so food can move safely from a provider to someone who needs it.</p></div>
+    <div class="steps">
+      <article><span>01</span><div class="step-icon">🥕</div><h3>List surplus</h3><p>Add food details, quantity, location and pickup deadline.</p></article>
+      <article><span>02</span><div class="step-icon">📍</div><h3>Find a match</h3><p>Recipients browse available food and request collection.</p></article>
+      <article><span>03</span><div class="step-icon">✓</div><h3>Check safety</h3><p>Review storage, allergens, expiry and suitability.</p></article>
+      <article><span>04</span><div class="step-icon">🤝</div><h3>Confirm pickup</h3><p>Update the request and record the food rescued.</p></article>
+    </div>
+  </section>
+
+  <section id="add-food" class="form-section">
+    <div class="section-heading"><div><div class="section-kicker">FOR FOOD PROVIDERS</div><h2>Share what you <em>can.</em></h2></div><p>Have safe, unserved food? Create a listing so a recipient can request pickup.</p></div>
+    <form id="listingForm" class="panel form-grid">
+      <label>Food name *<input name="title" required placeholder="e.g. Fresh vegetable meals"></label>
+      <label>Food category<select name="category"><option>Prepared meals</option><option>Fruits & vegetables</option><option>Bakery</option><option>Dairy</option><option>Packaged food</option><option>Other</option></select></label>
+      <label>Quantity *<input name="quantity" type="number" min="0.1" step="0.1" required placeholder="e.g. 20"></label>
+      <label>Unit<select name="unit"><option>portions</option><option>kg</option><option>packs</option><option>boxes</option><option>items</option></select></label>
+      <label class="wide">Pickup location *<input name="location" required placeholder="Building, campus, area or full address"></label>
+      <label>Pickup deadline<input name="pickupDeadline" type="datetime-local"></label>
+      <label>Expiry / prepared time<input name="expiryInfo" placeholder="e.g. Prepared today at 11 AM"></label>
+      <label class="wide">Storage and handling details<textarea name="storageDetails" placeholder="How has the food been stored?"></textarea></label>
+      <label>Allergen information<input name="allergens" placeholder="e.g. Contains dairy, nuts / Unknown"></label>
+      <label>Provider name<input name="providerName" placeholder="Canteen / restaurant / person"></label>
+      <label class="wide safety-check"><input name="safetyChecked" type="checkbox"> I have checked the food details and will follow applicable food-safety and handling requirements.</label>
+      <div class="wide form-bottom"><p>Listings are not a food-safety certification. Recipients must verify suitability before collection.</p><button class="btn btn-primary" type="submit">Publish food listing <b>→</b></button></div>
+    </form>
+  </section>
+
+  <section id="listings" class="listing-section">
+    <div class="section-heading"><div><div class="section-kicker">DISCOVER AVAILABLE FOOD</div><h2>Food near <em>your community.</em></h2></div><p>Browse current surplus listings and send a collection request.</p></div>
+    <div class="listing-toolbar"><input id="searchInput" placeholder="⌕  Search food or location..."><select id="categoryFilter"><option value="">All categories</option><option>Prepared meals</option><option>Fruits & vegetables</option><option>Bakery</option><option>Dairy</option><option>Packaged food</option><option>Other</option></select><button id="refreshBtn" class="btn btn-outline">↻ Refresh</button></div>
+    <div id="listingGrid" class="listing-grid"><div class="empty">Loading food listings…</div></div>
+  </section>
+
+  <section id="requests" class="requests-section">
+    <div class="section-heading"><div><div class="section-kicker">COLLECTION TRACKER</div><h2>Pickup <em>requests.</em></h2></div><p>Track requests and update the collection journey.</p></div>
+    <div id="requestList" class="request-list"><div class="empty">Loading requests…</div></div>
+  </section>
+</main>
+<footer><div class="footer-brand">✳ FoodRescue</div><p>Reduce waste. Rescue surplus. Share responsibly.</p><div class="developer">IDT PROJECT · ELECTRONICS & COMPUTER SCIENCE · O3<br><strong>Developed by Vinay Kawre</strong> <span>· Team Food Wastage Solutions</span></div><small>Prototype for educational demonstration. Always follow local food-safety rules.</small></footer>
+<div id="toast" role="status" class="toast"></div>
+<div id="requestModal" class="modal-backdrop hidden"><form id="requestForm" class="modal panel"><button type="button" id="closeModal" class="modal-close">×</button><div class="section-kicker">REQUEST COLLECTION</div><h2>Make it <em>count.</em></h2><p id="modalFoodName" class="muted"></p><input type="hidden" name="listingId"><label>Your name *<input name="recipientName" required placeholder="Your name"></label><label>Organisation / group *<input name="organisation" required placeholder="Community group, NGO, hostel…"></label><label>Message<textarea name="message" placeholder="Preferred pickup time or details"></textarea></label><button class="btn btn-primary full" type="submit">Send pickup request →</button></form></div>
+<script src="/app.js"></script>
+</body></html>

@@ -1,0 +1,11 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "buildCommand": "node -e \"require('fs').cpSync('src/main/resources/static','dist',{recursive:true})\"",
+  "outputDirectory": "dist",
+  "rewrites": [
+    {
+      "source": "/api/:path*",
+      "destination": "https://food-rescue-api-26kawrevm.onrender.com/api/:path*"
+    }
+  ]
+}
