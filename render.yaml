@@ -1,9 +1,9 @@
 services:
   - type: web
-    name: food-rescue-api-26kawrevm
+    name: food-rescue-api
     runtime: docker
     plan: starter
-    dockerfilePath: ./Dockerfile
+    dockerfilePath: ./render/Dockerfile
     healthCheckPath: /api/dashboard
     disk:
       name: food-rescue-data

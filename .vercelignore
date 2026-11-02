@@ -1,0 +1,8 @@
+.env
+.env.*
+.git
+.vercel
+.vscode
+data
+dist
+target

@@ -8,3 +8,5 @@ target/
 data/
 dist/
 .vercel/
+.vercel
+.env*
