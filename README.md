@@ -33,10 +33,10 @@ The checked-in `.env.example` documents the local defaults. The workspace `.env`
 4. If Windows Firewall asks, allow Java on **Private networks**. Do not expose the database console to an untrusted network.
 
 ## Deploy with Render and Vercel
-- **Render** runs the Spring Boot API and bundled website from `render/Dockerfile`. The included `render.yaml` configures a persistent disk at `/var/data`, the H2 database, and a health check. The disk requires a paid Render service plan.
+- **Render** runs the Spring Boot API and bundled website from `render/Dockerfile`. The included `render.yaml` configures a free web service, an ephemeral H2 database, and a health check. Free instances can sleep when idle, and their local database contents can be lost on restart or redeploy.
 - **Vercel** serves the static frontend and rewrites `/api/*` to the Render service URL configured in `vercel.json`.
 - Connect this GitHub repository to Render using its Blueprint flow and to Vercel as a project. Keep the Render service name `food-rescue-api`, or update the API rewrite in `vercel.json` if you choose a different service name.
-- The H2 file database is for a classroom prototype and a single running server. For public multi-user use, move to managed PostgreSQL and add authentication, access controls, backups, and moderation before accepting real donations.
+- The H2 file database is for a classroom prototype and a single running server. To retain data across Render restarts, upgrade the service and attach persistent storage or use managed PostgreSQL. For public multi-user use, add authentication, access controls, backups, and moderation before accepting real donations.
 
 ## Prototype features
 - Create, search and filter surplus food listings.

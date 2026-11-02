@@ -2,16 +2,12 @@ services:
   - type: web
     name: food-rescue-api
     runtime: docker
-    plan: starter
+    plan: free
     dockerfilePath: ./render/Dockerfile
     healthCheckPath: /api/dashboard
-    disk:
-      name: food-rescue-data
-      mountPath: /var/data
-      sizeGB: 1
     envVars:
       - key: SPRING_DATASOURCE_URL
-        value: jdbc:h2:file:/var/data/foodrescue-db;AUTO_SERVER=TRUE
+        value: jdbc:h2:file:/tmp/foodrescue-db
       - key: SPRING_DATASOURCE_USERNAME
         value: sa
       - key: SPRING_DATASOURCE_PASSWORD
