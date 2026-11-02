@@ -5,7 +5,7 @@
   "rewrites": [
     {
       "source": "/api/:path*",
-      "destination": "https://food-rescue-api.onrender.com/api/:path*"
+      "destination": "https://food-rescue-api-v4a5.onrender.com/api/:path*"
     }
   ]
 }
